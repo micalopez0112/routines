@@ -7,7 +7,13 @@ require("./database");
 app.use(cors());
 app.use(express.json());
 
-app.use("/api", require("./routes/index"));
+// Importa y usa las rutas individuales
+const routineRoutes = require("./routes/routineRoutes");
+const serieRoutes = require("./routes/seriesRoutes");
 
-app.listen(3000);
-console.log("Server on port", 3000);
+app.use("/api/routines", routineRoutes);
+app.use("/api/series", serieRoutes);
+
+app.listen(3000, () => {
+  console.log("Server on port", 3000);
+});

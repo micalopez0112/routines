@@ -1,19 +1,28 @@
-const { Router } = require("express");
-const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Types;
-
-const router = Router();
-
 const Routine = require("../models/Routine");
 const Serie = require("../models/Serie");
 const Exercise = require("../models/Exercise");
 
-const jwt = require("jsonwebtoken");
-
-router.get("/", (req, res) => res.send("Hello world"));
-
-router.post("/add-routine", async (req, res) => {
+exports.getRoutines = async (req, res) => {
   try {
+    const routines = await Routine.find()
+      .populate("series")
+      .populate({
+        path: "series",
+        populate: {
+          path: "exercises",
+          model: "Exercise",
+        },
+      });
+    res.json(routines);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener las rutinas" });
+  }
+};
+
+exports.addRoutine = async (req, res) => {
+  try {
+    console.log("aaaa");
     const { name, dateCreated, dateUpdated, series } = req.body;
     let seriesIds = [];
     for (const serie of series) {
@@ -45,27 +54,9 @@ router.post("/add-routine", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "An error occurred" });
   }
-});
+};
 
-router.get("/get-routines", async (req, res) => {
-  try {
-    const routines = await Routine.find()
-      .populate("series")
-      .populate({
-        path: "series",
-        populate: {
-          path: "exercises",
-          model: "Exercise",
-        },
-      });
-    res.json(routines);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error al obtener las rutinas" });
-  }
-});
-
-router.delete("/delete-routine/:routineId", async (req, res) => {
+exports.deleteRoutine = async (req, res) => {
   try {
     console.log("aaaaa");
     const routineId = req.params.routineId;
@@ -77,33 +68,9 @@ router.delete("/delete-routine/:routineId", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
-});
+};
 
-router.put("/update-serie/:serieId", async (req, res) => {
-  const { serieId } = req.params;
-  const { completed } = req.body;
-
-  try {
-    if (!mongoose.Types.ObjectId.isValid(serieId)) {
-      return res.status(400).json({ error: "ID de serie no válido" });
-    }
-    const updatedSerie = await Serie.findByIdAndUpdate(
-      serieId,
-      { $set: { completed } },
-      { new: true }
-    ).exec();
-
-    if (!updatedSerie) {
-      return res.status(404).json({ error: "Serie no encontrada" });
-    }
-    return res.json(updatedSerie);
-  } catch (error) {
-    console.error("Error al actualizar la serie:", error);
-    return res.status(500).json({ error: "Error al actualizar la serie" });
-  }
-});
-
-router.post("/restart-routine", async (req, res) => {
+exports.restartRoutine = async (req, res) => {
   try {
     const { routineId } = req.body;
     console.log(routineId);
@@ -123,6 +90,4 @@ router.post("/restart-routine", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "An error occurred" });
   }
-});
-
-module.exports = router;
+};
