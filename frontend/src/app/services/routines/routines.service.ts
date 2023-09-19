@@ -9,7 +9,7 @@ import { Serie } from 'src/app/models/serie';
 })
 export class RoutinesService {
   constructor(private http: HttpClient) {}
-  private URL = 'http://localhost:3000/api';
+  private URL = 'https://routines-i83u.onrender.com/api';
 
   async addRoutineAsync(newRoutine: Routine) {
     try {
