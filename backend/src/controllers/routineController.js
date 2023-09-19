@@ -1,6 +1,8 @@
 const Routine = require("../models/Routine");
 const Serie = require("../models/Serie");
 const Exercise = require("../models/Exercise");
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
 
 exports.getRoutines = async (req, res) => {
   try {

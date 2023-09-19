@@ -1,4 +1,6 @@
 const Serie = require("../models/Serie");
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
 
 exports.updateSerie = async (req, res) => {
   const { serieId } = req.params;
