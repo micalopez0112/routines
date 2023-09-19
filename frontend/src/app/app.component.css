@@ -1,0 +1,121 @@
+/* Estilos para el navbar */
+.navbar {
+  background-color: #ff9393; /* Color de fondo del navbar */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0; /* Reducimos el espacio interior vertical */
+  position: fixed; /* Fijamos el navbar en la parte superior */
+  top: 0; /* Alineamos el navbar en la parte superior */
+  left: 0; /* Alineamos el navbar en el borde izquierdo */
+  right: 0; /* Alineamos el navbar en el borde derecho */
+  z-index: 1000; /* Aseguramos que esté por encima de otros elementos */
+}
+
+.navbar-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  margin-left: 20px; /* Agregamos margen izquierdo para separar del borde */
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Agregamos margen derecho para separar del borde */
+}
+
+.nav-link {
+  display: inline-block;
+  height: 55px;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  text-decoration: none;
+  padding: 0 20px; /* Espaciado horizontal para los enlaces */
+}
+
+/* Estilos para el Hamburger bar */
+.nav-toggle {
+  display: none; /* Inicialmente oculto en pantallas más grandes */
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bar {
+  width: 35px;
+  height: 4px;
+  background-color: #fff;
+  margin: 3px 0;
+}
+
+/* Estilos para el menú desplegable en pantallas pequeñas */
+@media screen and (max-width: 650px) {
+  .nav-menu {
+    display: none; /* Inicialmente oculto en pantallas pequeñas */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Ajusta la posición desde la parte superior */
+    left: 0;
+    background-color: #ff9393;
+    width: 100%;
+    z-index: 1001; /* Asegura que esté por encima del navbar */
+  }
+
+  .nav-menu.active {
+    display: flex; /* Muestra el menú cuando la clase "active" está presente */
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  /* Muestra el Hamburger bar en pantallas pequeñas */
+  .nav-toggle {
+    display: flex;
+    margin-right: 10px;
+  }
+}
+
+.page-container {
+  margin-top: 80px;
+}
+
+/* Estilos para el footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0; /* Añadir espacio superior e inferior al footer */
+  text-align: center;
+  bottom: 0;
+  left: 0; /* Fijar el borde izquierdo */
+  right: 0; /* Fijar el borde derecho */
+  width: 100%;
+  z-index: 100; /* Asegurar que el footer esté en la parte superior */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.language-buttons button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.language-buttons button:hover {
+  background-color: #333;
+  color: #fff;
+}

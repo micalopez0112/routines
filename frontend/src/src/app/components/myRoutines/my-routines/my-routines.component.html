@@ -1,0 +1,66 @@
+<div class="routines-container">
+  <div class="routines-title">
+    <h2>{{ translationService.getTranslation("routines") }}</h2>
+  </div>
+  <div *ngFor="let routine of routines" class="routine-card">
+    <div class="title-container">
+      <h3 class="routine-name">{{ routine.name }}</h3>
+      <button class="restart-button" (click)="restartRoutine(routine._id)">
+        {{ translationService.getTranslation("restartRoutine") }}
+      </button>
+      <button class="delete-button" (click)="deleteRoutine(routine._id)">
+        {{ translationService.getTranslation("deleteRoutine") }}
+      </button>
+    </div>
+    <div class="series">
+      <div
+        *ngFor="let serie of routine.series"
+        class="serie"
+        [class.completed]="serie.completed"
+      >
+        <div class="serie-header">
+          <p>
+            <strong>{{ translationService.getTranslation("rounds") }}:</strong>
+            {{ serie.repetitions }}
+          </p>
+          <div class="completed-class">
+            <p>
+              <strong>{{
+                translationService.getTranslation("completed")
+              }}</strong>
+            </p>
+            <input
+              type="checkbox"
+              [(ngModel)]="serie.completed"
+              class="completed-checkbox"
+              (change)="updateCompletedStatus(serie)"
+            />
+          </div>
+        </div>
+
+        <ul class="exercise-list">
+          <li *ngFor="let exercise of serie.exercises" class="exercise">
+            <p class="exercise-name">{{ exercise.name }}</p>
+            <p class="">{{ exercise.description }}</p>
+            <div class="repetitions-class">
+              <p>
+                <strong
+                  >{{
+                    translationService.getTranslation("repetitions")
+                  }}:</strong
+                >
+                {{ exercise.repetitions }}
+              </p>
+              <p>
+                <strong
+                  >{{ translationService.getTranslation("eachOne") }}:</strong
+                >
+                {{ exercise.eachOne ? "Yes" : "No" }}
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+.routines-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.routine-card {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+
+.routine-name {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.series {
+  margin-top: 10px;
+}
+
+.serie {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.serie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.exercise-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.exercise {
+  border-top: 1px solid #ddd;
+}
+
+.exercise-description {
+  font-style: italic;
+  color: #777;
+}
+
+.repetitions-class {
+  display: flex;
+  align-items: center;
+}
+
+.repetitions-class p:first-child {
+  margin-right: 20px; /* Espacio entre Repetitions y Each One */
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.completed-checkbox {
+  margin: 10px;
+}
+
+.completed-class {
+  display: flex;
+}
+
+/* Estilos para la serie cuando está completada */
+.completed {
+  color: #ccc; /* Cambia el color del texto a gris claro */
+}
+
+/* Estilos para los elementos de la serie cuando está completada */
+.completed p {
+  color: #ccc; /* Cambia el color del texto a gris claro */
+}
+
+/* Estilos para el texto de los ejercicios cuando está completada */
+.completed .exercise p {
+  color: #ccc; /* Cambia el color del texto a gris claro */
+}
+
+/* Estilos para otros elementos de la serie cuando está completada */
+.completed .repetitions-class p {
+  color: #ccc; /* Cambia el color del texto a gris claro */
+}

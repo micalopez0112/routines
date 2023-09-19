@@ -1,0 +1,21 @@
+{
+  "addExercise": "Add Exercise",
+  "addRoutine": "Add Routine",
+  "addSerie": "Add Serie",
+  "completed": "Completed",
+  "deleteSerie": "Delete Serie",
+  "deleteRoutine": "Delete Routine",
+  "deleteExercise": "Delete Exercise",
+  "description": "Description",
+  "eachOne": "Each Side",
+  "exerciseDescription": "Exercise Description",
+  "exerciseName": "Exercise Name",
+  "mode": "Mode",
+  "myRoutines": "My Routines",
+  "name": "Name",
+  "repetitions": "Repetitions",
+  "restartRoutine": "Restart",
+  "rounds": "Rounds",
+  "routines": "Routines",
+  "serie": "Serie"
+}

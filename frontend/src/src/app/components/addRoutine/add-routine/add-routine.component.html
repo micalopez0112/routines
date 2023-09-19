@@ -1,0 +1,121 @@
+<div class="add-routine-container">
+  <div class="add-routine-title">
+    <h2>{{ translationService.getTranslation("addRoutine") }}</h2>
+  </div>
+  <div class="routine-information">
+    <div class="">
+      <div class="form-group">
+        <label for="">{{ translationService.getTranslation("name") }}:</label>
+        <input
+          type="text"
+          [(ngModel)]="routine.name"
+          name="name"
+          class=""
+          required
+          autofocus
+        />
+      </div>
+
+      <!-- Inputs para agregar una serie -->
+      <div class="series">
+        <div *ngFor="let serie of series; let i = index">
+          <div class="series-background">
+            <div class="serie-title">
+              <h2>{{ translationService.getTranslation("serie") }}</h2>
+              <div class="rounds-class">
+                <label for="repetitions{{ i }}"
+                  >{{ translationService.getTranslation("rounds") }}:</label
+                >
+                <input
+                  class="rounds-input"
+                  type="number"
+                  id="repetitions{{ i }}"
+                  [(ngModel)]="serie.repetitions"
+                />
+              </div>
+              <button class="add-button" type="button" (click)="addExercise(i)">
+                {{ translationService.getTranslation("addExercise") }}
+              </button>
+              <div class="delete-button-container">
+                <button
+                  class="delete-button"
+                  type="button"
+                  (click)="deleteSeries(i)"
+                >
+                  {{ translationService.getTranslation("deleteSerie") }}
+                </button>
+              </div>
+            </div>
+
+            <!-- Inputs para agregar ejercicios a la serie actual -->
+            <div *ngFor="let exercise of serie.exercises; let j = index">
+              <div class="exercise-container">
+                <label for="name{{ i }}{{ j }}"
+                  >{{
+                    translationService.getTranslation("exerciseName")
+                  }}:</label
+                >
+                <input
+                  class=""
+                  type="text"
+                  id="name{{ i }}{{ j }}"
+                  [(ngModel)]="exercise.name"
+                />
+                <label for="description{{ i }}{{ j }}"
+                  >{{
+                    translationService.getTranslation("exerciseDescription")
+                  }}:</label
+                >
+                <input
+                  class=""
+                  type="text"
+                  id="description{{ i }}{{ j }}"
+                  [(ngModel)]="exercise.description"
+                />
+                <label for="repetitions{{ i }}"
+                  >{{
+                    translationService.getTranslation("repetitions")
+                  }}:</label
+                >
+                <input
+                  class="repetitions-input"
+                  type="number"
+                  id="repetitions{{ i }}"
+                  [(ngModel)]="exercise.repetitions"
+                />
+
+                <label>{{ translationService.getTranslation("mode") }}:</label>
+                <button
+                  type="button"
+                  class="mode-button"
+                  [class.active]="exercise.eachOne"
+                  (click)="toggleMode(exercise)"
+                >
+                  {{ exercise.eachOne ? "Cada lado" : "En total" }}
+                </button>
+
+                <button
+                  type="button"
+                  class="delete-button"
+                  (click)="deleteExercise(i, j)"
+                >
+                  {{ translationService.getTranslation("deleteExercise") }}
+                </button>
+              </div>
+
+              <!-- Agregar más campos de ejercicio aquí, como repetitions, eachOne, description, etc. -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="add-button" (click)="addSeries()">
+        {{ translationService.getTranslation("addSerie") }}
+      </button>
+
+      <button type="submit" class="sumbit-button" (click)="addRoutineAsync()">
+        {{ translationService.getTranslation("addRoutine") }}
+      </button>
+    </div>
+  </div>
+</div>

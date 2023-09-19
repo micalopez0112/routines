@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <a class="navbar-title" routerLink="/">My Routines</a>
+  <div class="nav-toggle" #navToggle>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="nav-menu" #navMenu>
+    <a class="nav-link" routerLink="/myRoutines">{{
+      translationService.getTranslation("myRoutines")
+    }}</a>
+    <a class="nav-link" routerLink="/addRoutine">{{
+      translationService.getTranslation("addRoutine")
+    }}</a>
+  </div>
+</nav>
+
+<div class="page-container">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2023 Tu Nombre</p>
+    <div class="language-buttons">
+      <button (click)="changeLanguage('en')">English</button>
+      <button (click)="changeLanguage('es')">Español</button>
+    </div>
+  </div>
+</footer>
