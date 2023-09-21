@@ -118,12 +118,11 @@
   border-color: var(--light-blue);
   color: white;
   cursor: pointer;
-  padding: 10px 15px; /* Ajusta el valor de padding según tus preferencias */
 }
 
 /* Personaliza el estilo de las opciones */
 .language-option {
-  padding: 5px 10px; /* Ajusta el valor de padding según tus preferencias */
   margin: 5px 0; /* Puedes ajustar estos valores según tus necesidades */
   font-size: medium;
+  padding: 10px 15px; /* Ajusta el valor de padding según tus preferencias */
 }
