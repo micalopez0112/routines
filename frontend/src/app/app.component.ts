@@ -39,4 +39,15 @@ export class AppComponent {
     const menu = this.navMenu.nativeElement;
     menu.classList.remove('active');
   }
+
+  selectedLanguage: string = 'en'; // Inicialmente, el idioma seleccionado es español
+
+  languages: any[] = [
+    { code: 'es', name: 'Español' },
+    { code: 'en', name: 'Inglés' },
+  ];
+
+  onLanguageChange() {
+    this.translationService.changeLanguage(this.selectedLanguage);
+  }
 }

@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 /* src/styles.css o src/styles.scss */
+
+:root {
+  --dark-blue: rgb(21 56 107);
+  --light-blue: #a6c5ff;
+  --white: white;
+  --darkest-blue: rgb(0 21 50);
+  --orange: #ff5800;
+  --light-orange: #ffc5a6b3;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;

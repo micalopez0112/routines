@@ -12,6 +12,22 @@
     <a class="nav-link" routerLink="/addRoutine">{{
       translationService.getTranslation("addRoutine")
     }}</a>
+    <div class="language-switcher">
+      <select
+        id="language-select"
+        [(ngModel)]="selectedLanguage"
+        (change)="onLanguageChange()"
+        class="language-select"
+      >
+        <option
+          *ngFor="let language of languages"
+          [value]="language.code"
+          class="language-option"
+        >
+          {{ language.name }}
+        </option>
+      </select>
+    </div>
   </div>
 </nav>
 
@@ -22,9 +38,5 @@
 <footer class="footer">
   <div class="footer-content">
     <p>&copy; 2023 Tu Nombre</p>
-    <div class="language-buttons">
-      <button (click)="changeLanguage('en')">English</button>
-      <button (click)="changeLanguage('es')">Español</button>
-    </div>
   </div>
 </footer>

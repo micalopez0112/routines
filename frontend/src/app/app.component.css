@@ -1,6 +1,6 @@
 /* Estilos para el navbar */
 .navbar {
-  background-color: #ff9393; /* Color de fondo del navbar */
+  background-color: var(--light-blue); /* Color de fondo del navbar */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   display: flex;
   justify-content: space-between;
@@ -24,7 +24,6 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  margin-right: 20px; /* Agregamos margen derecho para separar del borde */
 }
 
 .nav-link {
@@ -60,7 +59,7 @@
     position: absolute;
     top: 60px; /* Ajusta la posición desde la parte superior */
     left: 0;
-    background-color: #ff9393;
+    background-color: var(--dark-blue);
     width: 100%;
     z-index: 1001; /* Asegura que esté por encima del navbar */
   }
@@ -74,10 +73,8 @@
     text-align: center;
   }
 
-  /* Muestra el Hamburger bar en pantallas pequeñas */
   .nav-toggle {
     display: flex;
-    margin-right: 10px;
   }
 }
 
@@ -85,10 +82,7 @@
   margin-top: 80px;
 }
 
-/* Estilos para el footer */
 .footer {
-  background-color: #333;
-  color: #fff;
   padding: 20px 0; /* Añadir espacio superior e inferior al footer */
   text-align: center;
   bottom: 0;
@@ -96,14 +90,6 @@
   right: 0; /* Fijar el borde derecho */
   width: 100%;
   z-index: 100; /* Asegurar que el footer esté en la parte superior */
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 960px;
-  margin: 0 auto;
 }
 
 .language-buttons button {
@@ -118,4 +104,26 @@
 .language-buttons button:hover {
   background-color: #333;
   color: #fff;
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+/* Aumenta el padding del elemento select para agregar espacio en los bordes */
+.language-select {
+  background-color: var(--light-blue);
+  border-color: var(--light-blue);
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px; /* Ajusta el valor de padding según tus preferencias */
+}
+
+/* Personaliza el estilo de las opciones */
+.language-option {
+  padding: 5px 10px; /* Ajusta el valor de padding según tus preferencias */
+  margin: 5px 0; /* Puedes ajustar estos valores según tus necesidades */
+  font-size: medium;
 }
