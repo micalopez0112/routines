@@ -21,7 +21,7 @@
         <div *ngFor="let serie of series; let i = index">
           <div class="series-background">
             <div class="serie-title">
-              <h2>{{ translationService.getTranslation("serie") }}</h2>
+              <h3>{{ translationService.getTranslation("serie") }}</h3>
               <div class="rounds-class">
                 <label for="repetitions{{ i }}"
                   >{{ translationService.getTranslation("rounds") }}:</label
@@ -116,6 +116,12 @@
       <button type="submit" class="sumbit-button" (click)="addRoutineAsync()">
         {{ translationService.getTranslation("addRoutine") }}
       </button>
+
+      <!-- Mostrar mensajes de éxito o error -->
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
   </div>
 </div>

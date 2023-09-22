@@ -8,6 +8,9 @@
   "deleteExercise": "Delete Exercise",
   "description": "Description",
   "eachOne": "Each Side",
+  "editRoutine": "Edit Routine",
+  "enterName": "Enter routine name",
+  "enterSeries": "Enter series",
   "exerciseDescription": "Exercise Description",
   "exerciseName": "Exercise Name",
   "mode": "Mode",
@@ -16,6 +19,7 @@
   "repetitions": "Repetitions",
   "restartRoutine": "Restart",
   "rounds": "Rounds",
+  "routineAddedSuccessfully": "Routine added successfully",
   "routines": "Routines",
   "serie": "Serie"
 }

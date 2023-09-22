@@ -1,35 +1,4 @@
-<nav class="navbar">
-  <a class="navbar-title" routerLink="/">My Routines</a>
-  <div class="nav-toggle" #navToggle>
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
-  <div class="nav-menu" #navMenu>
-    <a class="nav-link" routerLink="/myRoutines">{{
-      translationService.getTranslation("myRoutines")
-    }}</a>
-    <a class="nav-link" routerLink="/addRoutine">{{
-      translationService.getTranslation("addRoutine")
-    }}</a>
-    <div class="language-switcher">
-      <select
-        id="language-select"
-        [(ngModel)]="selectedLanguage"
-        (change)="onLanguageChange()"
-        class="language-select"
-      >
-        <option
-          *ngFor="let language of languages"
-          [value]="language.code"
-          class="language-option"
-        >
-          {{ language.name }}
-        </option>
-      </select>
-    </div>
-  </div>
-</nav>
+<app-navbar></app-navbar>
 
 <div class="page-container">
   <router-outlet></router-outlet>

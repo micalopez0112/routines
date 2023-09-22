@@ -8,6 +8,9 @@
   "deleteExercise": "Borrar Exercise",
   "description": "Descripción",
   "eachOne": "Cada lado",
+  "editRoutine": "Editar Rutina",
+  "enterName": "Ingrese un nombre para la rutina",
+  "enterSeries": "Ingrese series",
   "exerciseDescription": "Descripción",
   "exerciseName": "Nombre",
   "mode": "Modo",
@@ -16,6 +19,7 @@
   "repetitions": "Repeticiones",
   "restartRoutine": "Reiniciar",
   "rounds": "Rondas",
+  "routineAddedSuccessfully": "Rutina ageragada exitosamente",
   "routines": "Rutinas",
   "serie": "Serie"
 }

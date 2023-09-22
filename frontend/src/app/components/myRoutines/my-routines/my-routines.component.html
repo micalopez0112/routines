@@ -5,7 +5,7 @@
   <div *ngFor="let routine of routines" class="routine-card">
     <div class="title-container">
       <h3 class="routine-name">{{ routine.name }}</h3>
-      <button class="restart-button" (click)="restartRoutine(routine._id)">
+      <button class="sumbit-button" (click)="restartRoutine(routine._id)">
         {{ translationService.getTranslation("restartRoutine") }}
       </button>
       <button class="delete-button" (click)="deleteRoutine(routine._id)">
@@ -61,6 +61,11 @@
           </li>
         </ul>
       </div>
+    </div>
+    <div class="edit-button-class">
+      <button class="edit-button" (click)="openEditDialog(routine)">
+        {{ translationService.getTranslation("editRoutine") }}
+      </button>
     </div>
   </div>
 </div>

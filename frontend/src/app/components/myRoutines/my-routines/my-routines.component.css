@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 }
 
 .routine-card {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   padding: 10px;
   margin: 10px;
@@ -24,7 +25,7 @@
 }
 
 .serie {
-  background-color: #fff;
+  background-color: #efefef;
   border: 1px solid #ddd;
   padding: 10px;
   margin: 10px 0;
@@ -93,4 +94,8 @@
 /* Estilos para otros elementos de la serie cuando está completada */
 .completed .repetitions-class p {
   color: #ccc; /* Cambia el color del texto a gris claro */
+}
+
+.edit-button-class {
+  float: right;
 }

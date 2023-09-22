@@ -1,0 +1,83 @@
+<!-- edit-routine.component.html -->
+
+<h2>Edit Routine</h2>
+
+<form>
+  <!-- Campos de la Rutina -->
+  <div class="form-group">
+    <label for="routineName">Routine Name</label>
+    <input
+      type="text"
+      id="routineName"
+      name="routineName"
+      [(ngModel)]="routine.name"
+    />
+  </div>
+
+  <!-- Campos de las Series -->
+  <div *ngFor="let serie of routine.series; let i = index" class="serie-form">
+    <h3>Serie {{ i + 1 }}</h3>
+    <div class="form-group">
+      <label for="repetitions{{ i }}">Repetitions</label>
+      <input
+        type="number"
+        id="repetitions{{ i }}"
+        name="repetitions{{ i }}"
+        [(ngModel)]="serie.repetitions"
+      />
+    </div>
+
+    <!-- Campos de los Ejercicios -->
+    <div
+      *ngFor="let exercise of serie.exercises; let j = index"
+      class="exercise-form"
+    >
+      <h4>Exercise {{ j + 1 }}</h4>
+      <div class="form-group">
+        <label for="exerciseName{{ i }}{{ j }}">Exercise Name</label>
+        <input
+          type="text"
+          id="exerciseName{{ i }}{{ j }}"
+          name="exerciseName{{ i }}{{ j }}"
+          [(ngModel)]="exercise.name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exerciseDescription{{ i }}{{ j }}"
+          >Exercise Description</label
+        >
+        <textarea
+          id="exerciseDescription{{ i }}{{ j }}"
+          name="exerciseDescription{{ i }}{{ j }}"
+          [(ngModel)]="exercise.description"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exerciseRepetitions{{ i }}{{ j }}"
+          >Exercise Repetitions</label
+        >
+        <input
+          type="number"
+          id="exerciseRepetitions{{ i }}{{ j }}"
+          name="exerciseRepetitions{{ i }}{{ j }}"
+          [(ngModel)]="exercise.repetitions"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exerciseEachOne{{ i }}{{ j }}">Each One</label>
+        <input
+          type="checkbox"
+          id="exerciseEachOne{{ i }}{{ j }}"
+          name="exerciseEachOne{{ i }}{{ j }}"
+          [(ngModel)]="exercise.eachOne"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones de Guardar y Descartar -->
+  <div class="form-buttons">
+    <button type="button" (click)="saveRoutine()">Save</button>
+    <button type="button" (click)="discardChanges()">Discard</button>
+  </div>
+</form>

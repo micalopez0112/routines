@@ -3,7 +3,7 @@
 
 :root {
   --dark-blue: rgb(21 56 107);
-  --light-blue: #a6c5ff;
+  --light-blue: #7fa8f6;
   --white: white;
   --darkest-blue: rgb(0 21 50);
   --orange: #ff5800;
@@ -13,6 +13,7 @@
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
+  background-color: #acacac;
 }
 
 button {
@@ -20,7 +21,7 @@ button {
 }
 
 .delete-button {
-  background-color: #ff0000;
+  background-color: #da4242;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -32,8 +33,21 @@ button {
   background-color: #cc0000;
 }
 
+.edit-button {
+  background-color: #1a811d;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #136416;
+}
+
 .add-button {
-  background-color: #0099ff;
+  background-color: #0072be;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -46,7 +60,7 @@ button {
 }
 
 .sumbit-button {
-  background-color: #00c42a;
+  background-color: #6894e8;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -55,9 +69,25 @@ button {
 }
 
 .sumbit-button:hover {
-  background-color: #009821;
+  background-color: #466bb0;
 }
 
 h2 {
-  border-bottom: 2px solid #909090;
+  border-bottom: 2px solid #303030;
+  color: white;
+}
+
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+/* Estilo para el Snackbar de éxito */
+.custom-success-snackbar {
+  background-color: green; /* Cambia el fondo al color deseado */
+  color: white; /* Cambia el color del texto al deseado */
+}
+
+/* Estilo para el Snackbar de error */
+.custom-error-snackbar {
+  background-color: red; /* Cambia el fondo al color deseado */
+  color: white; /* Cambia el color del texto al deseado */
 }
