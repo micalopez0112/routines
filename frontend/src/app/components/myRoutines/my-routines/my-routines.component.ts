@@ -23,11 +23,19 @@ export class MyRoutinesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.routinesService.getRoutinesAsync();
-    this.routinesService.routines$.subscribe((routines) => {
-      this.routines = routines;
-      console.log('component' + this.routines);
-    });
+    this.routinesService.routines$.subscribe(
+      (routines) => {
+        this.routines = routines;
+        console.log('component' + this.routines);
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error(error);
+        this.isLoading = false;
+      }
+    );
   }
 
   deleteRoutine(routineId: string) {
