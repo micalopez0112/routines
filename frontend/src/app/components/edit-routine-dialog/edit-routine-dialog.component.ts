@@ -1,5 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Routine } from 'src/app/models/routine';
+import { RoutinesService } from 'src/app/services/routines/routines.service';
+import { TranslationService } from 'src/app/services/translation/translation.service';
 
 @Component({
   selector: 'app-edit-routine-dialog',
@@ -7,28 +10,28 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./edit-routine-dialog.component.css'],
 })
 export class EditRoutineDialogComponent {
-  routine: any; // Ajusta el tipo según tu estructura de datos para las rutinas
+  routine: Routine; // Ajusta el tipo según tu estructura de datos para las rutinas
 
   constructor(
     public dialogRef: MatDialogRef<EditRoutineDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public translationService: TranslationService,
+    private routinesService: RoutinesService
   ) {
-    console.log(data);
-    // Inicializa la propiedad 'routine' con los datos proporcionados al diálogo
-    this.routine = data.routine; // Asegúrate de que 'routine' coincide con la estructura de datos
+    this.routine = data.routine;
+    console.log(this.routine);
   }
 
   saveRoutine() {
-    // Implementa la lógica para guardar la rutina aquí
-    // Puedes acceder a 'this.routine' para obtener los datos de la rutina
-    // Luego, cierra el diálogo cuando se complete la operación
-    this.dialogRef.close();
+    this.routinesService
+      .updateRoutine(this.routine)
+      .subscribe((updatedRoutine) => {
+        console.log('Rutina actualizada:', updatedRoutine);
+        this.dialogRef.close();
+      });
   }
 
   discardChanges() {
-    // Implementa la lógica para descartar los cambios en la rutina aquí
-    // Puedes acceder a 'this.routine' para obtener los datos de la rutina
-    // Luego, cierra el diálogo cuando se complete la operación
     this.dialogRef.close();
   }
 }

@@ -93,3 +93,70 @@ exports.restartRoutine = async (req, res) => {
     res.status(500).json({ message: "An error occurred" });
   }
 };
+
+exports.updateRoutine = async (req, res) => {
+  const { routineId } = req.params;
+  const updatedRoutineData = req.body;
+
+  // console.log(req.params);
+  // console.log(req.body);
+
+  try {
+    // Primero, actualiza la rutina
+    const updatedRoutine = await Routine.findByIdAndUpdate(
+      routineId,
+      updatedRoutineData,
+      { new: true }
+    );
+
+    // Luego, actualiza las series y ejercicios relacionados
+    for (const serieIdObject of updatedRoutine.series) {
+      let serieId = serieIdObject.toString();
+      let findeSerie = findSeriesById(updatedRoutineData, serieId);
+      let updatedSerie = await Serie.findByIdAndUpdate(serieId, findeSerie, {
+        new: true,
+      });
+
+      for (const exerciseIdObject of updatedSerie.exercises) {
+        let exerciseId = exerciseIdObject.toString();
+        // console.log(exerciseId);
+        let updatedExercise = findExerciseById(findeSerie, exerciseId);
+        // console.log(updatedExercise);
+
+        let ex = await Exercise.findByIdAndUpdate(exerciseId, updatedExercise, {
+          new: true,
+        });
+        console.log(ex);
+      }
+    }
+
+    res.status(200).json(updatedRoutine);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "Error al actualizar la rutina y sus relaciones." });
+  }
+};
+
+function findSeriesById(routine, seriesId) {
+  // console.log(routine);
+  for (const serie of routine.series) {
+    // console.log(serie);
+    if (serie._id === seriesId) {
+      return serie;
+    }
+  }
+  return null;
+}
+
+function findExerciseById(serie, exerciseId) {
+  // console.log(serie);
+  for (const exercise of serie.exercises) {
+    // console.log(serie);
+    if (exercise._id === exerciseId) {
+      return exercise;
+    }
+  }
+  return null;
+}

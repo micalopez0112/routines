@@ -7,5 +7,6 @@ router.post("/add-routine", RoutineController.addRoutine);
 router.delete("/delete-routine/:routineId", RoutineController.deleteRoutine);
 router.post("/restart-routine", RoutineController.restartRoutine);
 router.get("/get-routines", RoutineController.getRoutines);
+router.put("/update-routine/:routineId", RoutineController.updateRoutine);
 
 module.exports = router;

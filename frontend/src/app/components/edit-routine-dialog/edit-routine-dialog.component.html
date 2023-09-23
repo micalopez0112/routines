@@ -1,83 +1,101 @@
 <!-- edit-routine.component.html -->
+<div class="dialog-container">
+  <div class="information-container">
+    <h3>Edit Routine</h3>
 
-<h2>Edit Routine</h2>
+    <form>
+      <div class="routine-content">
+        <!-- Campos de la Rutina -->
+        <div class="form-group">
+          <label class="font-bold"
+            >{{ translationService.getTranslation("name") }}:</label
+          >
+          <input
+            type="text"
+            id="routineName"
+            name="routineName"
+            [(ngModel)]="routine.name"
+            class="margin-sizes"
+          />
+        </div>
 
-<form>
-  <!-- Campos de la Rutina -->
-  <div class="form-group">
-    <label for="routineName">Routine Name</label>
-    <input
-      type="text"
-      id="routineName"
-      name="routineName"
-      [(ngModel)]="routine.name"
-    />
+        <!-- Campos de las Series -->
+        <div *ngFor="let serie of routine.series; let i = index" class="serie">
+          <div class="serie-header">
+            <h3>{{ translationService.getTranslation("serie") }}</h3>
+            <div class="rounds-class">
+              <label for="repetitions{{ i }}" class="font-bold"
+                >{{ translationService.getTranslation("rounds") }}:</label
+              >
+              <input
+                type="number"
+                id="repetitions{{ i }}"
+                name="repetitions{{ i }}"
+                [(ngModel)]="serie.repetitions"
+              />
+            </div>
+          </div>
+
+          <!-- Campos de los Ejercicios -->
+          <div
+            *ngFor="let exercise of serie.exercises; let j = index"
+            class="exercise-form"
+          >
+            <hr />
+            <div class="form-group">
+              <label class="font-bold" for="name{{ i }}{{ j }}"
+                >{{ translationService.getTranslation("exerciseName") }}:</label
+              >
+              <input
+                type="text"
+                id="exerciseName{{ i }}{{ j }}"
+                name="exerciseName{{ i }}{{ j }}"
+                [(ngModel)]="exercise.name"
+              />
+            </div>
+            <div class="form-group description-class">
+              <label class="font-bold" for="exerciseDescription{{ i }}{{ j }}"
+                >Description:</label
+              >
+              <textarea
+                id="exerciseDescription{{ i }}{{ j }}"
+                name="exerciseDescription{{ i }}{{ j }}"
+                [(ngModel)]="exercise.description"
+              ></textarea>
+            </div>
+            <div class="d-flex">
+              <div class="form-group">
+                <label class="font-bold" for="exerciseRepetitions{{ i }}{{ j }}"
+                  >{{
+                    translationService.getTranslation("repetitions")
+                  }}:</label
+                >
+                <input
+                  type="number"
+                  id="exerciseRepetitions{{ i }}{{ j }}"
+                  name="exerciseRepetitions{{ i }}{{ j }}"
+                  [(ngModel)]="exercise.repetitions"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exerciseEachOne{{ i }}{{ j }}">Each One</label>
+                <input
+                  type="checkbox"
+                  id="exerciseEachOne{{ i }}{{ j }}"
+                  name="exerciseEachOne{{ i }}{{ j }}"
+                  [(ngModel)]="exercise.eachOne"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de Guardar y Descartar -->
+      <div class="form-buttons">
+        <button type="button" (click)="saveRoutine()">Save</button>
+        <button type="button" (click)="discardChanges()">Discard</button>
+      </div>
+    </form>
   </div>
-
-  <!-- Campos de las Series -->
-  <div *ngFor="let serie of routine.series; let i = index" class="serie-form">
-    <h3>Serie {{ i + 1 }}</h3>
-    <div class="form-group">
-      <label for="repetitions{{ i }}">Repetitions</label>
-      <input
-        type="number"
-        id="repetitions{{ i }}"
-        name="repetitions{{ i }}"
-        [(ngModel)]="serie.repetitions"
-      />
-    </div>
-
-    <!-- Campos de los Ejercicios -->
-    <div
-      *ngFor="let exercise of serie.exercises; let j = index"
-      class="exercise-form"
-    >
-      <h4>Exercise {{ j + 1 }}</h4>
-      <div class="form-group">
-        <label for="exerciseName{{ i }}{{ j }}">Exercise Name</label>
-        <input
-          type="text"
-          id="exerciseName{{ i }}{{ j }}"
-          name="exerciseName{{ i }}{{ j }}"
-          [(ngModel)]="exercise.name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exerciseDescription{{ i }}{{ j }}"
-          >Exercise Description</label
-        >
-        <textarea
-          id="exerciseDescription{{ i }}{{ j }}"
-          name="exerciseDescription{{ i }}{{ j }}"
-          [(ngModel)]="exercise.description"
-        ></textarea>
-      </div>
-      <div class="form-group">
-        <label for="exerciseRepetitions{{ i }}{{ j }}"
-          >Exercise Repetitions</label
-        >
-        <input
-          type="number"
-          id="exerciseRepetitions{{ i }}{{ j }}"
-          name="exerciseRepetitions{{ i }}{{ j }}"
-          [(ngModel)]="exercise.repetitions"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exerciseEachOne{{ i }}{{ j }}">Each One</label>
-        <input
-          type="checkbox"
-          id="exerciseEachOne{{ i }}{{ j }}"
-          name="exerciseEachOne{{ i }}{{ j }}"
-          [(ngModel)]="exercise.eachOne"
-        />
-      </div>
-    </div>
-  </div>
-
-  <!-- Botones de Guardar y Descartar -->
-  <div class="form-buttons">
-    <button type="button" (click)="saveRoutine()">Save</button>
-    <button type="button" (click)="discardChanges()">Discard</button>
-  </div>
-</form>
+</div>

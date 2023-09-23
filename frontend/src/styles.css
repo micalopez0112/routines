@@ -91,3 +91,40 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
   background-color: red; /* Cambia el fondo al color deseado */
   color: white; /* Cambia el color del texto al deseado */
 }
+
+hr {
+  color: #333; /* Cambia el color de la línea */
+  border: none; /* Elimina el borde predeterminado */
+  background-color: #c1c1c1; /* Cambia el color de fondo de la línea */
+  height: 1px; /* Cambia el grosor de la línea */
+  margin: 15px 0; /* Agrega espacio alrededor de la línea */
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.margin-sizes {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input[type="number"] {
+  width: 40px;
+}
+
+textarea {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+}

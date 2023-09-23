@@ -9,8 +9,8 @@ import { Serie } from 'src/app/models/serie';
 })
 export class RoutinesService {
   constructor(private http: HttpClient) {}
-  private URL = 'https://routines-i83u.onrender.com/api';
-  // private URL = 'http://localhost:3000/api';
+  // private URL = 'https://routines-i83u.onrender.com/api';
+  private URL = 'http://localhost:3000/api';
 
   async addRoutineAsync(newRoutine: Routine) {
     try {
@@ -50,5 +50,11 @@ export class RoutinesService {
     return this.http.post<Routine[]>(this.URL + '/routines/restart-routine', {
       routineId: routineId,
     });
+  }
+
+  updateRoutine(routine: Routine): Observable<any> {
+    let routineId = routine._id;
+    const url = this.URL + '/routines/update-routine/' + `${routineId}`; // Ajusta la URL según tu API
+    return this.http.put(url, routine);
   }
 }

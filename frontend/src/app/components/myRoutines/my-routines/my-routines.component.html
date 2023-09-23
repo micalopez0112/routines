@@ -19,20 +19,22 @@
         [class.completed]="serie.completed"
       >
         <div class="serie-header">
-          <p>
-            <strong>{{ translationService.getTranslation("rounds") }}:</strong>
-            {{ serie.repetitions }}
-          </p>
-          <div class="completed-class">
-            <p>
-              <strong>{{
-                translationService.getTranslation("completed")
-              }}</strong>
-            </p>
+          <div class="d-flex">
+            <label class="font-bold"
+              >{{ translationService.getTranslation("rounds") }}:</label
+            >
+            <div class="margin-sizes">
+              {{ serie.repetitions }}
+            </div>
+          </div>
+
+          <div class="completed-class d-flex">
+            <label class="font-bold"
+              >{{ translationService.getTranslation("completed") }}:</label
+            >
             <input
               type="checkbox"
               [(ngModel)]="serie.completed"
-              class="completed-checkbox"
               (change)="updateCompletedStatus(serie)"
             />
           </div>
@@ -40,23 +42,29 @@
 
         <ul class="exercise-list">
           <li *ngFor="let exercise of serie.exercises" class="exercise">
-            <p class="exercise-name">{{ exercise.name }}</p>
-            <p class="">{{ exercise.description }}</p>
+            <hr />
+            <p>{{ exercise.name }}</p>
+            <p>{{ exercise.description }}</p>
             <div class="repetitions-class">
-              <p>
-                <strong
+              <div class="d-flex">
+                <label class="font-bold"
                   >{{
                     translationService.getTranslation("repetitions")
-                  }}:</strong
+                  }}:</label
                 >
-                {{ exercise.repetitions }}
-              </p>
-              <p>
-                <strong
-                  >{{ translationService.getTranslation("eachOne") }}:</strong
+                <div class="margin-sizes">
+                  {{ exercise.repetitions }}
+                </div>
+              </div>
+
+              <div class="d-flex">
+                <label class="font-bold"
+                  >{{ translationService.getTranslation("eachOne") }}:</label
                 >
-                {{ exercise.eachOne ? "Yes" : "No" }}
-              </p>
+                <div class="margin-sizes">
+                  {{ exercise.eachOne ? "Yes" : "No" }}
+                </div>
+              </div>
             </div>
           </li>
         </ul>

@@ -1,0 +1,31 @@
+.serie {
+  background-color: #efefef;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.routine-content {
+  max-height: 400px; /* Establece una altura máxima para el contenido */
+  overflow-y: scroll; /* Agrega una barra de desplazamiento vertical */
+}
+
+.rounds-input {
+  width: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.description-class {
+  align-items: center;
+  display: flex;
+}
+
+.form-group {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* */
