@@ -15,7 +15,6 @@
         />
       </div>
 
-      <!-- Inputs para agregar una serie -->
       <div class="series">
         <div *ngFor="let serie of series; let i = index">
           <div class="series-background">
@@ -46,7 +45,6 @@
               </div>
             </div>
 
-            <!-- Inputs para agregar ejercicios a la serie actual -->
             <div *ngFor="let exercise of serie.exercises; let j = index">
               <div class="exercise-container">
                 <label for="name{{ i }}{{ j }}"
@@ -98,8 +96,6 @@
                   {{ translationService.getTranslation("deleteExercise") }}
                 </button>
               </div>
-
-              <!-- Agregar más campos de ejercicio aquí, como repetitions, eachOne, description, etc. -->
             </div>
           </div>
         </div>
@@ -113,7 +109,6 @@
         {{ translationService.getTranslation("addRoutine") }}
       </button>
 
-      <!-- Mostrar mensajes de éxito o error -->
       <div *ngIf="successMessage" class="success-message">
         {{ successMessage }}
       </div>

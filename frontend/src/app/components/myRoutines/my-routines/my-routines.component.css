@@ -60,7 +60,7 @@
 }
 
 .repetitions-class p:first-child {
-  margin-right: 20px; /* Espacio entre Repetitions y Each One */
+  margin-right: 20px;
 }
 
 .title-container {
@@ -76,24 +76,20 @@
   display: flex;
 }
 
-/* Estilos para la serie cuando está completada */
 .completed {
-  color: #ccc; /* Cambia el color del texto a gris claro */
+  color: #ccc;
 }
 
-/* Estilos para los elementos de la serie cuando está completada */
 .completed p {
-  color: #ccc; /* Cambia el color del texto a gris claro */
+  color: #ccc;
 }
 
-/* Estilos para el texto de los ejercicios cuando está completada */
 .completed .exercise p {
-  color: #ccc; /* Cambia el color del texto a gris claro */
+  color: #ccc;
 }
 
-/* Estilos para otros elementos de la serie cuando está completada */
 .completed .repetitions-class p {
-  color: #ccc; /* Cambia el color del texto a gris claro */
+  color: #ccc;
 }
 
 .edit-button-class {

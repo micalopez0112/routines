@@ -87,8 +87,8 @@ export class AddRoutineComponent implements OnInit {
           this.translationService.getTranslation('routineAddedSuccessfully'),
           '',
           {
-            panelClass: ['custom-success-snackbar'], // Clase de estilo para el Snackbar
-            duration: 5000, // Duración del Snackbar en milisegundos
+            panelClass: ['custom-success-snackbar'],
+            duration: 5000,
           }
         );
 
@@ -102,10 +102,8 @@ export class AddRoutineComponent implements OnInit {
         this.series = [];
       }
     } catch (error) {
-      // En caso de error, muestra un mensaje de error
       this.errorMessage = 'Error al agregar la rutina';
     } finally {
-      // Cierra el mensaje emergente después de unos segundos
       setTimeout(() => {
         this.successMessage = null;
         this.errorMessage = null;

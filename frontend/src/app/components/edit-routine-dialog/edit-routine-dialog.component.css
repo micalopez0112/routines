@@ -8,8 +8,8 @@
 }
 
 .routine-content {
-  max-height: 400px; /* Establece una altura máxima para el contenido */
-  overflow-y: scroll; /* Agrega una barra de desplazamiento vertical */
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .rounds-input {
@@ -27,5 +27,3 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
-/* */

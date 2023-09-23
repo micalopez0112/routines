@@ -39,11 +39,8 @@ export class MyRoutinesComponent implements OnInit {
   }
 
   updateCompletedStatus(serie: Serie): void {
-    // Llama a tu servicio de datos para actualizar el estado en la base de datos
     this.routinesService.updateSerieAsync(serie).subscribe(
-      (response) => {
-        // Maneja la respuesta exitosa si es necesario
-      },
+      (response) => {},
       (error) => {
         console.error(error);
       }
@@ -57,12 +54,10 @@ export class MyRoutinesComponent implements OnInit {
   }
 
   openEditDialog(routine: Routine) {
-    // Abre el diálogo de edición y pasa el ID de la rutina
     const dialogRef = this.dialog.open(EditRoutineDialogComponent, {
       data: { routine: routine },
     });
 
-    // Suscríbete al resultado del diálogo (por ejemplo, cuando se cierra el diálogo)
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Diálogo cerrado con resultado: ${result}`);
     });

@@ -1,11 +1,9 @@
-<!-- edit-routine.component.html -->
 <div class="dialog-container">
   <div class="information-container">
     <h3>Edit Routine</h3>
 
     <form>
       <div class="routine-content">
-        <!-- Campos de la Rutina -->
         <div class="form-group">
           <label class="font-bold"
             >{{ translationService.getTranslation("name") }}:</label
@@ -19,7 +17,6 @@
           />
         </div>
 
-        <!-- Campos de las Series -->
         <div *ngFor="let serie of routine.series; let i = index" class="serie">
           <div class="serie-header">
             <h3>{{ translationService.getTranslation("serie") }}</h3>
@@ -36,7 +33,6 @@
             </div>
           </div>
 
-          <!-- Campos de los Ejercicios -->
           <div
             *ngFor="let exercise of serie.exercises; let j = index"
             class="exercise-form"
@@ -91,7 +87,6 @@
         </div>
       </div>
 
-      <!-- Botones de Guardar y Descartar -->
       <div class="form-buttons">
         <button type="button" (click)="saveRoutine()">Save</button>
         <button type="button" (click)="discardChanges()">Discard</button>

@@ -10,7 +10,7 @@ import { TranslationService } from 'src/app/services/translation/translation.ser
   styleUrls: ['./edit-routine-dialog.component.css'],
 })
 export class EditRoutineDialogComponent {
-  routine: Routine; // Ajusta el tipo según tu estructura de datos para las rutinas
+  routine: Routine;
 
   constructor(
     public dialogRef: MatDialogRef<EditRoutineDialogComponent>,

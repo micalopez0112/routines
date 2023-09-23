@@ -3,11 +3,11 @@
 }
 
 .footer {
-  padding: 20px 0; /* Añadir espacio superior e inferior al footer */
+  padding: 20px 0;
   text-align: center;
   bottom: 0;
-  left: 0; /* Fijar el borde izquierdo */
-  right: 0; /* Fijar el borde derecho */
+  left: 0;
+  right: 0;
   width: 100%;
-  z-index: 100; /* Asegurar que el footer esté en la parte superior */
+  z-index: 100;
 }
