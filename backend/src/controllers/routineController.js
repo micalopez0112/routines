@@ -97,19 +97,14 @@ exports.restartRoutine = async (req, res) => {
 exports.updateRoutine = async (req, res) => {
   const { routineId } = req.params;
   const updatedRoutineData = req.body;
-
-  // console.log(req.params);
-  // console.log(req.body);
-
+  updatedRoutineData.dateUpdated = new Date();
   try {
-    // Primero, actualiza la rutina
     const updatedRoutine = await Routine.findByIdAndUpdate(
       routineId,
       updatedRoutineData,
       { new: true }
     );
 
-    // Luego, actualiza las series y ejercicios relacionados
     for (const serieIdObject of updatedRoutine.series) {
       let serieId = serieIdObject.toString();
       let findeSerie = findSeriesById(updatedRoutineData, serieId);
