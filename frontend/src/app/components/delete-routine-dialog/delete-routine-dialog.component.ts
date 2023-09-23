@@ -21,8 +21,7 @@ export class DeleteRoutineDialogComponent {
   }
 
   deleteRoutineAsync() {
-    this.routinesService.deleteRoutine(this.routineId).subscribe(() => {});
-    this.dialogRef.close();
+    this.dialogRef.close('deleted');
   }
 
   cancelDelete() {

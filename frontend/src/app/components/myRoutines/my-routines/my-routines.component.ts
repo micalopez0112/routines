@@ -22,28 +22,29 @@ export class MyRoutinesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getRoutinesAsync();
+    this.routinesService.getRoutinesAsync();
+    this.routinesService.routines$.subscribe((routines) => {
+      this.routines = routines;
+      console.log('component' + this.routines);
+    });
   }
 
   deleteRoutine(routineId: string) {
     const dialogRef = this.dialog.open(DeleteRoutineDialogComponent, {
       data: { routineId: routineId },
     });
-    this.getRoutinesAsync();
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'deleted') {
+        this.routinesService.deleteRoutine(routineId).subscribe(() => {
+          this.routinesService.getRoutinesAsync();
+        });
+      }
+    });
   }
 
   getRoutinesAsync() {
     this.isLoading = true;
-    this.routinesService.getRoutinesAsync().subscribe(
-      (routines) => {
-        this.routines = routines;
-        this.isLoading = false;
-      },
-      (error) => {
-        console.error('Error al cargar las rutinas', error);
-        this.isLoading = false;
-      }
-    );
   }
 
   updateCompletedStatus(serie: Serie): void {
@@ -57,7 +58,7 @@ export class MyRoutinesComponent implements OnInit {
 
   restartRoutine(routineId: string) {
     this.routinesService.restartRoutine(routineId).subscribe(() => {
-      this.getRoutinesAsync();
+      this.routinesService.getRoutinesAsync();
     });
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Routine } from 'src/app/models/routine';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Serie } from 'src/app/models/serie';
 
 @Injectable({
@@ -11,6 +11,13 @@ export class RoutinesService {
   constructor(private http: HttpClient) {}
   // private URL = 'https://routines-i83u.onrender.com/api';
   private URL = 'http://localhost:3000/api';
+
+  private routines: Routine[] = [];
+  private routinesSubject = new BehaviorSubject<Routine[]>([]);
+
+  get routines$() {
+    return this.routinesSubject.asObservable();
+  }
 
   async addRoutineAsync(newRoutine: Routine) {
     try {
@@ -29,27 +36,45 @@ export class RoutinesService {
     }
   }
 
-  getRoutinesAsync(): Observable<Routine[]> {
-    return this.http.get<Routine[]>(this.URL + '/routines/get-routines');
+  getRoutinesAsync() {
+    let routines = this.http
+      .get<Routine[]>(this.URL + '/routines/get-routines')
+      .subscribe(
+        (routines) => {
+          this.routines = routines;
+          this.updateRoutines();
+        },
+        (error) => {
+          console.error('Error al cargar las rutinas', error);
+        }
+      );
+    console.log(routines);
   }
 
   deleteRoutine(routineId: string): Observable<Routine[]> {
-    return this.http.delete<Routine[]>(
-      this.URL + '/routines/delete-routine' + `/${routineId}`
-    );
+    return this.http
+      .delete<Routine[]>(
+        this.URL + '/routines/delete-routine' + `/${routineId}`
+      )
+      .pipe(tap(() => this.updateRoutines()));
+  }
+
+  private updateRoutines() {
+    this.routinesSubject.next([...this.routines]);
   }
 
   updateSerieAsync(serie: Serie): Observable<any> {
-    // Realiza una solicitud PUT o POST al backend para actualizar la serie
     const url = this.URL + '/series/update-serie' + `/${serie._id}`; // Reemplaza con la URL real de tu API
 
     return this.http.put(url, { completed: serie.completed });
   }
 
   restartRoutine(routineId: string): Observable<Routine[]> {
-    return this.http.post<Routine[]>(this.URL + '/routines/restart-routine', {
-      routineId: routineId,
-    });
+    return this.http
+      .post<Routine[]>(this.URL + '/routines/restart-routine', {
+        routineId: routineId,
+      })
+      .pipe(tap(() => this.updateRoutines()));
   }
 
   updateRoutine(routine: Routine): Observable<any> {
