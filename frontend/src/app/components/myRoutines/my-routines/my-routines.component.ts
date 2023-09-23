@@ -5,6 +5,7 @@ import { RoutinesService } from 'src/app/services/routines/routines.service';
 import { TranslationService } from 'src/app/services/translation/translation.service';
 import { EditRoutineDialogComponent } from '../../edit-routine-dialog/edit-routine-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteRoutineDialogComponent } from '../../delete-routine-dialog/delete-routine-dialog.component';
 
 @Component({
   selector: 'app-my-routines',
@@ -25,11 +26,10 @@ export class MyRoutinesComponent implements OnInit {
   }
 
   deleteRoutine(routineId: string) {
-    if (confirm('Are you sure you want to delete this routine?')) {
-      this.routinesService.deleteRoutine(routineId).subscribe(() => {
-        this.getRoutinesAsync();
-      });
-    }
+    const dialogRef = this.dialog.open(DeleteRoutineDialogComponent, {
+      data: { routineId: routineId },
+    });
+    this.getRoutinesAsync();
   }
 
   getRoutinesAsync() {

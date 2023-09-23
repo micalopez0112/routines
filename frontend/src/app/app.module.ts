@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { EditRoutineDialogComponent } from './components/edit-routine-dialog/edit-routine-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DeleteRoutineDialogComponent } from './components/delete-routine-dialog/delete-routine-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MyRoutinesComponent,
     NavbarComponent,
     EditRoutineDialogComponent,
+    DeleteRoutineDialogComponent,
   ],
   imports: [
     HttpClientModule,

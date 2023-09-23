@@ -19,7 +19,6 @@ export class EditRoutineDialogComponent {
     private routinesService: RoutinesService
   ) {
     this.routine = data.routine;
-    console.log(this.routine);
   }
 
   saveRoutine() {
