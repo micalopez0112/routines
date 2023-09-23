@@ -23,21 +23,23 @@
         >
           <div class="series-background">
             <div class="serie-title">
-              <h3>{{ translationService.getTranslation("serie") }}</h3>
-              <div class="rounds-class">
-                <label for="repetitions{{ i }}"
-                  >{{ translationService.getTranslation("rounds") }}:</label
-                >
-                <input
-                  class="rounds-input"
-                  type="number"
-                  id="repetitions{{ i }}"
-                  [(ngModel)]="serie.repetitions"
-                />
+              <div class="serie-header">
+                <div class="font-bold">
+                  {{ translationService.getTranslation("serie") }}
+                </div>
+                <div class="rounds-class">
+                  <label for="repetitions{{ i }}"
+                    >{{ translationService.getTranslation("rounds") }}:</label
+                  >
+                  <input
+                    class="rounds-input"
+                    type="number"
+                    id="repetitions{{ i }}"
+                    [(ngModel)]="serie.repetitions"
+                  />
+                </div>
               </div>
-              <button class="add-button" type="button" (click)="addExercise(i)">
-                {{ translationService.getTranslation("addExercise") }}
-              </button>
+
               <div class="delete-button-container">
                 <button
                   class="delete-button"
@@ -105,6 +107,9 @@
                 </button>
               </div>
             </div>
+            <button class="add-button" type="button" (click)="addExercise(i)">
+              {{ translationService.getTranslation("addExercise") }}
+            </button>
           </div>
         </div>
       </div>
