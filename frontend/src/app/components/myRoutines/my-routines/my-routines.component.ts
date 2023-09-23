@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MyRoutinesComponent implements OnInit {
   public routines: Routine[] = [];
+  public isLoading = false;
   constructor(
     private routinesService: RoutinesService,
     public translationService: TranslationService,
@@ -32,10 +33,17 @@ export class MyRoutinesComponent implements OnInit {
   }
 
   getRoutinesAsync() {
-    this.routinesService.getRoutinesAsync().subscribe((routines) => {
-      this.routines = routines;
-      console.log(this.routines);
-    });
+    this.isLoading = true;
+    this.routinesService.getRoutinesAsync().subscribe(
+      (routines) => {
+        this.routines = routines;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error al cargar las rutinas', error);
+        this.isLoading = false;
+      }
+    );
   }
 
   updateCompletedStatus(serie: Serie): void {

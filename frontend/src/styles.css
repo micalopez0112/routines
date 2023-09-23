@@ -123,3 +123,10 @@ textarea {
   margin-right: 10px;
   width: 100%;
 }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Esto centra el spinner verticalmente en la página completa */
+}
