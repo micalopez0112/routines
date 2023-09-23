@@ -132,4 +132,9 @@ export class AddRoutineComponent implements OnInit {
       event.currentIndex
     );
   }
+
+  onSeriesDrop(event: CdkDragDrop<Serie[]>) {
+    // Reordena las series
+    moveItemInArray(this.series, event.previousIndex, event.currentIndex);
+  }
 }

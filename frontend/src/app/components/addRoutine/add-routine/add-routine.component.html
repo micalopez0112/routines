@@ -15,11 +15,17 @@
         />
       </div>
 
-      <div class="series">
+      <div
+        class="series"
+        cdkDropList
+        (cdkDropListDropped)="onSeriesDrop($event)"
+      >
         <div
           *ngFor="let serie of series; let i = index"
           cdkDropList
           (cdkDropListDropped)="onExerciseDrop(i, $event)"
+          cdkDrag
+          [cdkDragData]="serie"
         >
           <div class="series-background">
             <div class="serie-title">
