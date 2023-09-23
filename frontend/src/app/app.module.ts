@@ -15,6 +15,7 @@ import { EditRoutineDialogComponent } from './components/edit-routine-dialog/edi
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DeleteRoutineDialogComponent } from './components/delete-routine-dialog/delete-routine-dialog.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DeleteRoutineDialogComponent } from './components/delete-routine-dialog
     MatSnackBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    DragDropModule,
   ],
   providers: [TranslationService],
   bootstrap: [AppComponent],

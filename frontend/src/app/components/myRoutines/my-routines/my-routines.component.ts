@@ -38,14 +38,14 @@ export class MyRoutinesComponent implements OnInit {
     );
   }
 
-  deleteRoutine(routineId: string) {
+  deleteRoutine(routine: Routine) {
     const dialogRef = this.dialog.open(DeleteRoutineDialogComponent, {
-      data: { routineId: routineId },
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'deleted') {
-        this.routinesService.deleteRoutine(routineId).subscribe(() => {
+        this.routinesService.deleteRoutine(routine).subscribe(() => {
           this.routinesService.getRoutinesAsync();
         });
       }

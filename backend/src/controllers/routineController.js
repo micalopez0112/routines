@@ -62,6 +62,24 @@ exports.deleteRoutine = async (req, res) => {
   try {
     console.log("aaaaa");
     const routineId = req.params.routineId;
+    const routine = await Routine.findById(routineId)
+      .populate("series")
+      .populate({
+        path: "series",
+        populate: {
+          path: "exercises",
+          model: "Exercise",
+        },
+      });
+    console.log(routine);
+
+    routine.series.forEach(async (serie) => {
+      serie.exercises.forEach(async (exercise) => {
+        await Exercise.findByIdAndRemove(exercise._id);
+      });
+      await Serie.findByIdAndRemove(serie._id);
+    });
+
     const deletedRoutine = await Routine.findByIdAndRemove(routineId);
     if (!deletedRoutine) {
       return res.status(404).json({ message: "Routine not found" });

@@ -48,13 +48,12 @@ export class RoutinesService {
           console.error('Error al cargar las rutinas', error);
         }
       );
-    console.log(routines);
   }
 
-  deleteRoutine(routineId: string): Observable<Routine[]> {
+  deleteRoutine(routine: Routine): Observable<Routine[]> {
     return this.http
       .delete<Routine[]>(
-        this.URL + '/routines/delete-routine' + `/${routineId}`
+        this.URL + '/routines/delete-routine' + `/${routine._id}`
       )
       .pipe(tap(() => this.updateRoutines()));
   }

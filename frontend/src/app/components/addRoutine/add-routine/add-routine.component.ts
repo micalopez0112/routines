@@ -5,6 +5,7 @@ import { Serie } from 'src/app/models/serie';
 import { RoutinesService } from 'src/app/services/routines/routines.service';
 import { TranslationService } from 'src/app/services/translation/translation.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-add-routine',
@@ -121,5 +122,14 @@ export class AddRoutineComponent implements OnInit {
 
   deleteExercise(serieIndex: number, exerciseIndex: number) {
     this.series[serieIndex].exercises.splice(exerciseIndex, 1);
+  }
+
+  onExerciseDrop(serieIndex: number, event: CdkDragDrop<Exercise[]>) {
+    // Reordena los ejercicios en la serie
+    moveItemInArray(
+      this.series[serieIndex].exercises,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

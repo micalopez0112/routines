@@ -16,7 +16,11 @@
       </div>
 
       <div class="series">
-        <div *ngFor="let serie of series; let i = index">
+        <div
+          *ngFor="let serie of series; let i = index"
+          cdkDropList
+          (cdkDropListDropped)="onExerciseDrop(i, $event)"
+        >
           <div class="series-background">
             <div class="serie-title">
               <h3>{{ translationService.getTranslation("serie") }}</h3>
@@ -45,7 +49,11 @@
               </div>
             </div>
 
-            <div *ngFor="let exercise of serie.exercises; let j = index">
+            <div
+              *ngFor="let exercise of serie.exercises; let j = index"
+              class="exercise-container"
+              cdkDrag
+            >
               <div class="exercise-container">
                 <label for="name{{ i }}{{ j }}"
                   >{{
