@@ -6,6 +6,7 @@ import { TranslationService } from 'src/app/services/translation/translation.ser
 import { EditRoutineDialogComponent } from '../../edit-routine-dialog/edit-routine-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRoutineDialogComponent } from '../../delete-routine-dialog/delete-routine-dialog.component';
+import { Exercise } from 'src/app/models/excersice';
 
 @Component({
   selector: 'app-my-routines',
@@ -70,5 +71,11 @@ export class MyRoutinesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Diálogo cerrado con resultado: ${result}`);
     });
+  }
+
+  getMode(exercise: Exercise): string {
+    return exercise.eachOne == true
+      ? this.translationService.getTranslation('eachOne')
+      : this.translationService.getTranslation('inTotal');
   }
 }

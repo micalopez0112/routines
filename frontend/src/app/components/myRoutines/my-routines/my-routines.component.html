@@ -63,10 +63,10 @@
 
               <div class="d-flex">
                 <label class="font-bold"
-                  >{{ translationService.getTranslation("eachOne") }}:</label
+                  >{{ translationService.getTranslation("mode") }}:</label
                 >
                 <div class="margin-sizes">
-                  {{ exercise.eachOne ? "Yes" : "No" }}
+                  {{ getMode(exercise) }}
                 </div>
               </div>
             </div>

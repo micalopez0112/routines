@@ -36,7 +36,7 @@ export class AddRoutineComponent implements OnInit {
     const newSerie: Serie = {
       _id: '',
       exercises: [],
-      repetitions: 0,
+      repetitions: 1,
       completed: false,
     };
     this.series.push(newSerie);
@@ -46,7 +46,7 @@ export class AddRoutineComponent implements OnInit {
     const newExercise: Exercise = {
       _id: '',
       name: '',
-      repetitions: 0,
+      repetitions: 1,
       eachOne: false,
     };
     this.series[serieIndex].exercises.push(newExercise);
